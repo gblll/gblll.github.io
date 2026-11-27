@@ -262,6 +262,39 @@ function isCurrent(href: string): boolean {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         });
       }
+
+      // Horizontal scroll edge fade cues & active-tab visibility for mobile nav
+      const siteNav = document.querySelector('.site-nav');
+      if (siteNav) {
+        const updateNavFade = () => {
+          const maxScroll = siteNav.scrollWidth - siteNav.clientWidth;
+          const canLeft = maxScroll > 2 && siteNav.scrollLeft > 2;
+          const canRight = maxScroll > 2 && siteNav.scrollLeft < maxScroll - 2;
+          siteNav.classList.toggle('fade-both', canLeft && canRight);
+          siteNav.classList.toggle('fade-left', canLeft && !canRight);
+          siteNav.classList.toggle('fade-right', !canLeft && canRight);
+        };
+
+        const activeLink = siteNav.querySelector('.nav-link[aria-current="page"]');
+        if (activeLink && siteNav.scrollWidth > siteNav.clientWidth + 2) {
+          const navRect = siteNav.getBoundingClientRect();
+          const linkRect = activeLink.getBoundingClientRect();
+          const relRight = linkRect.right - navRect.left + siteNav.scrollLeft;
+          const relLeft = linkRect.left - navRect.left + siteNav.scrollLeft;
+          if (relRight > siteNav.scrollLeft + siteNav.clientWidth - 16) {
+            siteNav.scrollLeft = Math.max(0, relRight - siteNav.clientWidth + 24);
+          } else if (relLeft < siteNav.scrollLeft + 16) {
+            siteNav.scrollLeft = Math.max(0, relLeft - 16);
+          }
+        }
+
+        siteNav.addEventListener('scroll', updateNavFade, { passive: true });
+        window.addEventListener('resize', updateNavFade, { passive: true });
+        if ('ResizeObserver' in window) {
+          new ResizeObserver(updateNavFade).observe(siteNav);
+        }
+        updateNavFade();
+      }
     </script>
 
     {

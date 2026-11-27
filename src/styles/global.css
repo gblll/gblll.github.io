@@ -176,6 +176,7 @@ a:hover {
 }
 
 .site-brand {
+  flex-shrink: 0;
   font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: -0.03em;
@@ -211,9 +212,48 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 1.35rem;
+  min-width: 0;
+}
+
+.site-nav.fade-right {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    #000 0,
+    #000 calc(100% - 20px),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    #000 0,
+    #000 calc(100% - 20px),
+    transparent 100%
+  );
+}
+
+.site-nav.fade-left {
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 20px, #000 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 20px, #000 100%);
+}
+
+.site-nav.fade-both {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 20px,
+    #000 calc(100% - 20px),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 20px,
+    #000 calc(100% - 20px),
+    transparent 100%
+  );
 }
 
 .nav-link {
+  flex-shrink: 0;
   font-size: 0.96rem;
   font-weight: 400;
   color: var(--text-secondary);
@@ -233,6 +273,7 @@ a:hover {
 }
 
 .nav-tools {
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
@@ -1381,26 +1422,53 @@ a:hover {
   }
 
   .header-inner {
-    gap: 0.5rem;
+    gap: 0;
   }
 
   .site-brand {
     font-size: 1.02rem;
+    margin-right: 0.85rem;
   }
 
-  .site-brand-spacer,
-  .site-brand-home {
+  .site-brand-spacer {
     display: none;
   }
 
+  .site-brand-home {
+    max-width: 0;
+    margin-right: 0;
+    overflow: hidden;
+    transition:
+      max-width 0.26s ease,
+      margin-right 0.26s ease,
+      opacity 0.22s ease,
+      transform 0.22s ease,
+      color 0.15s ease;
+  }
+
+  .site-brand-home.visible {
+    max-width: 6.5rem;
+    margin-right: 0.85rem;
+  }
+
   .site-nav {
-    gap: 0.62rem;
+    flex: 0 1 auto;
+    min-width: 0;
+    gap: 0.72rem;
     overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
     margin-left: auto;
+    padding: 0.25rem 0;
+  }
+
+  .site-nav::-webkit-scrollbar {
+    display: none;
   }
 
   .nav-link {
-    font-size: 0.84rem;
+    font-size: 0.86rem;
   }
 
   .social-icons {
