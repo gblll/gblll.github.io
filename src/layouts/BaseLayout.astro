@@ -43,7 +43,7 @@ function isCurrent(href: string): boolean {
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link id="site-favicon" rel="icon" type="image/svg+xml" href="/favicon.svg" />
     {
       SITE.enableWriting && (
         <link
@@ -68,6 +68,10 @@ function isCurrent(href: string): boolean {
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         const theme = stored || (prefersDark ? 'dark' : 'light');
         document.documentElement.dataset.theme = theme;
+        if (stored) {
+          const fav = document.getElementById('site-favicon');
+          if (fav) fav.setAttribute('href', theme === 'dark' ? '/favicon-dark.svg' : '/favicon-light.svg');
+        }
       })();
     </script>
   </head>
@@ -202,11 +206,15 @@ function isCurrent(href: string): boolean {
     <script is:inline>
       // Theme toggle
       const themeToggle = document.getElementById('theme-toggle');
+      const faviconEl = document.getElementById('site-favicon');
       themeToggle?.addEventListener('click', () => {
         const current = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
         const next = current === 'dark' ? 'light' : 'dark';
         document.documentElement.dataset.theme = next;
         localStorage.setItem('theme', next);
+        if (faviconEl) {
+          faviconEl.setAttribute('href', next === 'dark' ? '/favicon-dark.svg' : '/favicon-light.svg');
+        }
       });
 
       // Back to top button visibility
