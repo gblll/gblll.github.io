@@ -190,6 +190,19 @@ a:hover {
   text-decoration: none;
 }
 
+.site-brand-home {
+  opacity: 0;
+  transform: translateY(4px);
+  pointer-events: none;
+  transition: opacity 0.22s ease, transform 0.22s ease, color 0.15s ease;
+}
+
+.site-brand-home.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
 .site-brand-spacer {
   min-width: 1px;
 }
@@ -1375,7 +1388,8 @@ a:hover {
     font-size: 1.02rem;
   }
 
-  .site-brand-spacer {
+  .site-brand-spacer,
+  .site-brand-home {
     display: none;
   }
 

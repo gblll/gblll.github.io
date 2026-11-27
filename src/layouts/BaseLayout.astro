@@ -79,15 +79,15 @@ function isCurrent(href: string): boolean {
   <body>
     <header class="site-header">
       <div class:list={['container', 'header-inner', { 'container-wide': wide }]}>
-        {
-          isHome ? (
-            <span class="site-brand-spacer" aria-hidden="true" />
-          ) : (
-            <a href="/" class="site-brand">
-              {SITE.name}
-            </a>
-          )
-        }
+        <a
+          href="/"
+          class:list={['site-brand', { 'site-brand-home': isHome }]}
+          id={isHome ? 'home-nav-brand' : undefined}
+          aria-hidden={isHome ? 'true' : undefined}
+          tabindex={isHome ? -1 : undefined}
+        >
+          {SITE.name}
+        </a>
 
         <nav class="site-nav" aria-label="Primary">
           {
@@ -227,6 +227,41 @@ function isCurrent(href: string): boolean {
       backToTop?.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
+
+      // Reveal top-left navbar name on homepage once "Zi-Bin Lin, PhD" scrolls past the navbar
+      const homeNavBrand = document.getElementById('home-nav-brand');
+      const aboutName = document.querySelector('.about-name');
+      if (homeNavBrand && aboutName) {
+        const syncHomeBrand = (show) => {
+          homeNavBrand.classList.toggle('visible', show);
+          homeNavBrand.setAttribute('aria-hidden', show ? 'false' : 'true');
+          if (show) {
+            homeNavBrand.removeAttribute('tabindex');
+          } else {
+            homeNavBrand.setAttribute('tabindex', '-1');
+          }
+        };
+
+        if ('IntersectionObserver' in window) {
+          const navObserver = new IntersectionObserver(
+            (entries) => {
+              const entry = entries[0];
+              if (entry) syncHomeBrand(!entry.isIntersecting);
+            },
+            { rootMargin: '-58px 0px 0px 0px', threshold: 0 }
+          );
+          navObserver.observe(aboutName);
+        } else {
+          const fallback = () => syncHomeBrand(aboutName.getBoundingClientRect().bottom <= 58);
+          window.addEventListener('scroll', fallback, { passive: true });
+          fallback();
+        }
+
+        homeNavBrand.addEventListener('click', (e) => {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
     </script>
 
     {
