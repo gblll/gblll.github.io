@@ -154,7 +154,7 @@ export const SITE = {
   bioHtml: [
     'Welcome! I am an ultrasound and acoustics researcher with expertise in acoustic metamaterials, ultrasonic device development, and wavefield engineering. I received my PhD in Physics from the <a href="https://acoustics-lab.hust.edu.cn/index.htm" target="_blank" rel="noopener noreferrer">Acoustic Metamaterials and Devices Laboratory</a> at <a href="https://english.hust.edu.cn/" target="_blank" rel="noopener noreferrer">Huazhong University of Science and Technology</a>, where I worked with <a href="https://scholar.google.com/citations?user=qHpUKWwAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Prof. Xue-Feng Zhu</a> and <a href="https://scholar.google.com/citations?user=mhuKjN0AAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Assoc. Prof. Yu-Gui Peng</a>. My research focuses on designing functional acoustic metastructures and flexible ultrasonic systems for high-resolution imaging, acoustic holography, and energy harvesting.',
     'Bridging physical modeling, inverse design, and experimental acoustics, I aim to translate advanced wavefront modulation concepts into compact, reliable ultrasonic technologies for biomedical imaging and sensing.',
-    'I am currently seeking a postdoctoral position in ultrasound and related areas. Please feel free to reach out via <a href="mailto:linzibin.edu@gmail.com">email</a>.',
+    '<em>I am currently seeking a postdoctoral position in ultrasound and related areas. Please feel free to reach out via <a href="mailto:linzibin.edu@gmail.com">email</a>.</em>',
   ],
 
   // Research Interests (middot-separated concise keywords on homepage)
