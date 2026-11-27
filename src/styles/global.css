@@ -589,10 +589,15 @@ a:hover {
 .research-thumb--cover {
   object-fit: cover;
   object-position: center;
+  transform: scale(1.015);
 }
 
 .research-card:hover .research-thumb {
   transform: scale(1.025);
+}
+
+.research-card:hover .research-thumb--cover {
+  transform: scale(1.04);
 }
 
 .research-card-body {
