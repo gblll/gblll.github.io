@@ -228,5 +228,16 @@ function isCurrent(href: string): boolean {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     </script>
+
+    {
+      import.meta.env.PROD && SITE.cloudflareAnalyticsToken && (
+        <script
+          is:inline
+          type="module"
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon={JSON.stringify({ token: SITE.cloudflareAnalyticsToken })}
+        />
+      )
+    }
   </body>
 </html>

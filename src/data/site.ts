@@ -147,6 +147,9 @@ export const SITE = {
   // Optional static CV PDF path inside `public/` (leave empty '' to trigger browser Print/PDF)
   cvPdfUrl: '',
 
+  // Cloudflare Web Analytics public beacon token (active in production builds only)
+  cloudflareAnalyticsToken: 'f5e6bff78cba4633909c3fae8b1a9cb9',
+
   // SEO metadata
   title: 'Zi-Bin Lin, PhD',
   description:
