@@ -124,7 +124,7 @@ export interface SkillRow {
 
 export const SITE = {
   // Brand & URL
-  url: 'https://gblll.github.io',
+  url: 'https://gblll.com',
   handle: 'gblll',
   name: 'Zi-Bin Lin',
   /** Displayed on homepage H1 (e.g. "Zi-Bin Lin, PhD") */

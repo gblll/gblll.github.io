@@ -1,6 +1,6 @@
 # gblll.github.io
 
-Personal academic website of **Zi-Bin Lin, PhD**, built with [Astro](https://astro.build) and deployed automatically to GitHub Pages (`https://gblll.github.io`).
+Personal academic website of **Zi-Bin Lin, PhD**, built with [Astro](https://astro.build) and deployed automatically to GitHub Pages (`https://gblll.com`).
 
 ## Pages
 

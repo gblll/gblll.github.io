@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://gblll.github.io',
+  site: 'https://gblll.com',
   devToolbar: {
     enabled: false,
   },
