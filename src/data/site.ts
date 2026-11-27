@@ -553,6 +553,7 @@ export const SITE = {
       title:
         'Experimental investigation of acoustic moiré effect controlled by twisted bilayer gratings',
       authors: ['Yu Hu', 'Zi-Bin Lin', 'Zong-Lin Li', 'Yu-Gui Peng', 'Xue-Feng Zhu'],
+      coFirstAuthors: ['Yu Hu', 'Zi-Bin Lin'],
       correspondingAuthors: ['Yu-Gui Peng', 'Xue-Feng Zhu'],
       venue: 'Ultrasonics',
       volumeInfo: '141, 107338',
