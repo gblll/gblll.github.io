@@ -17,7 +17,8 @@ const { project } = Astro.props;
 
 const relatedPubs = project.keyPublicationIds
   .map((id) => SITE.publications.find((pub) => pub.id === id))
-  .filter((pub): pub is NonNullable<typeof pub> => Boolean(pub));
+  .filter((pub): pub is NonNullable<typeof pub> => Boolean(pub))
+  .sort((a, b) => b.year - a.year || b.onlineDate.localeCompare(a.onlineDate));
 
 const isVideoAsset = (src: string) => /\.(mp4|webm)(?:[?#].*)?$/i.test(src);
 ---

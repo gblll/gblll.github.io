@@ -914,9 +914,9 @@ export const SITE = {
         'Using picosecond-laser-fabricated <strong>high-pixel binary metasurfaces (~90,000 pixels)</strong> and zero-padded angular-spectrum propagation, 3D hydrophone field scans verified diffraction-limited manifold acoustic holography across multiple depths, frequencies, and 3D underwater targets, earning a cover feature in <em>Advanced Materials</em>. Extending these optimization methods to planar, sharp-edge, virtual super-lens, and 3D-printed phase metalenses further realized acoustic bottle beams, sidelobe-suppressed far-field focusing, and super-resolution pulse-echo defect and target imaging across waterborne ultrasonic regimes, highlighted by two <em>Applied Physics Letters</em> Featured Articles.',
       ],
       keyPublicationIds: [
-        'zeng2025manifold',
         'wang2026holography',
         'qiu2026super',
+        'zeng2025manifold',
         'zheng2024superlens',
         'lin2023metalens',
         'zeng2022sharpedge',
