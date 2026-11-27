@@ -144,8 +144,9 @@ export const SITE = {
   avatar: '/avatar.svg',
   avatarAlt: 'Portrait of Zi-Bin Lin',
 
-  // Optional static CV PDF path inside `public/` (leave empty '' to trigger browser Print/PDF)
-  cvPdfUrl: '',
+  // CV PDF link (Google Drive share link or local path inside `public/`; leave empty '' for Print/PDF)
+  cvPdfUrl:
+    'https://drive.google.com/file/d/1YLMQQOw_QYVjTVcagRpAOOj0XZKfjXgr/view?usp=sharing',
 
   // Cloudflare Web Analytics public beacon token (active in production builds only)
   cloudflareAnalyticsToken: 'f5e6bff78cba4633909c3fae8b1a9cb9',
@@ -193,7 +194,12 @@ export const SITE = {
 
   // Centered monochrome bottom icon row on homepage
   socials: [
-    { label: 'Biography / CV', href: '/biography/', icon: 'cv', external: false },
+    {
+      label: 'Curriculum Vitae (PDF)',
+      href: 'https://drive.google.com/file/d/1YLMQQOw_QYVjTVcagRpAOOj0XZKfjXgr/view?usp=sharing',
+      icon: 'cv',
+      external: true,
+    },
     { label: 'Email', href: 'mailto:linzibin.edu@gmail.com', icon: 'email', external: false },
     {
       label: 'Google Scholar',
