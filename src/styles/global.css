@@ -574,12 +574,21 @@ a:hover {
   border-bottom: 1px solid var(--border);
 }
 
+.research-thumb-wrap--cover {
+  background-color: #1c2c52;
+}
+
 .research-thumb {
   width: 100%;
   height: 100%;
   object-fit: contain;
   display: block;
   transition: transform 0.3s ease;
+}
+
+.research-thumb--cover {
+  object-fit: cover;
+  object-position: center;
 }
 
 .research-card:hover .research-thumb {

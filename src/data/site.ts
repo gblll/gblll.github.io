@@ -65,6 +65,8 @@ export interface ResearchProject {
   status: 'ongoing' | 'completed';
   roleLine: string;
   thumbnail: string;
+  /** Default 'contain' keeps diagrams unclipped; 'cover' fills 16:10 frame cleanly for full-bleed artwork */
+  thumbnailFit?: 'contain' | 'cover';
   heroImage?: string;
   heroCaption?: string;
   bodyHtml: string[];
@@ -906,6 +908,7 @@ export const SITE = {
       roleLine:
         'Principal Investigator & Ph.D. Research · Huazhong University of Science and Technology',
       thumbnail: '/projects/manifold-holography.jpg',
+      thumbnailFit: 'cover',
       bodyHtml: [
         'Shaping high-frequency ultrasonic fields into complex volumetric patterns or subwavelength focal spots with conventional 3D-printed phase plates is constrained by microfabrication tolerances, acoustic attenuation, single-plane bandwidth limits, and strong super-oscillatory sidelobes. Supported in part as Principal Investigator by the Fundamental Research Funds for the Central Universities, we developed inverse-design frameworks combining <strong>forward angular-spectrum optimization</strong> and <strong>MATLAB–COMSOL genetic algorithms</strong> to engineer ultrathin binary amplitude metasurfaces and planar acoustic metalenses for precision wavefront control.',
         'Using picosecond-laser-fabricated <strong>high-pixel binary metasurfaces (~90,000 pixels)</strong> and zero-padded angular-spectrum propagation, 3D hydrophone field scans verified diffraction-limited manifold acoustic holography across multiple depths, frequencies, and 3D underwater targets, earning a cover feature in <em>Advanced Materials</em>. Extending these optimization methods to planar, sharp-edge, virtual super-lens, and 3D-printed phase metalenses further realized acoustic bottle beams, sidelobe-suppressed far-field focusing, and super-resolution pulse-echo defect and target imaging across waterborne ultrasonic regimes, highlighted by two <em>Applied Physics Letters</em> Featured Articles.',

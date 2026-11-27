@@ -26,11 +26,19 @@ const isVideoAsset = (src: string) => /\.(mp4|webm)(?:[?#].*)?$/i.test(src);
         <div class="research-grid">
           {ongoing.map((project) => (
             <a href={`/research/${project.slug}/`} class="research-card">
-              <div class="research-thumb-wrap">
+              <div
+                class:list={[
+                  'research-thumb-wrap',
+                  { 'research-thumb-wrap--cover': project.thumbnailFit === 'cover' },
+                ]}
+              >
                 {isVideoAsset(project.thumbnail) ? (
                   <video
                     src={project.thumbnail}
-                    class="research-thumb"
+                    class:list={[
+                      'research-thumb',
+                      { 'research-thumb--cover': project.thumbnailFit === 'cover' },
+                    ]}
                     autoplay
                     loop
                     muted
@@ -40,7 +48,10 @@ const isVideoAsset = (src: string) => /\.(mp4|webm)(?:[?#].*)?$/i.test(src);
                   <img
                     src={project.thumbnail}
                     alt={project.title}
-                    class="research-thumb"
+                    class:list={[
+                      'research-thumb',
+                      { 'research-thumb--cover': project.thumbnailFit === 'cover' },
+                    ]}
                     loading="lazy"
                   />
                 )}
@@ -65,11 +76,19 @@ const isVideoAsset = (src: string) => /\.(mp4|webm)(?:[?#].*)?$/i.test(src);
         <div class="research-grid">
           {completed.map((project) => (
             <a href={`/research/${project.slug}/`} class="research-card">
-              <div class="research-thumb-wrap">
+              <div
+                class:list={[
+                  'research-thumb-wrap',
+                  { 'research-thumb-wrap--cover': project.thumbnailFit === 'cover' },
+                ]}
+              >
                 {isVideoAsset(project.thumbnail) ? (
                   <video
                     src={project.thumbnail}
-                    class="research-thumb"
+                    class:list={[
+                      'research-thumb',
+                      { 'research-thumb--cover': project.thumbnailFit === 'cover' },
+                    ]}
                     autoplay
                     loop
                     muted
@@ -79,7 +98,10 @@ const isVideoAsset = (src: string) => /\.(mp4|webm)(?:[?#].*)?$/i.test(src);
                   <img
                     src={project.thumbnail}
                     alt={project.title}
-                    class="research-thumb"
+                    class:list={[
+                      'research-thumb',
+                      { 'research-thumb--cover': project.thumbnailFit === 'cover' },
+                    ]}
                     loading="lazy"
                   />
                 )}
