@@ -1,0 +1,224 @@
+---
+import '@fontsource/lato/300.css';
+import '@fontsource/lato/300-italic.css';
+import '@fontsource/lato/400.css';
+import '@fontsource/lato/400-italic.css';
+import '@fontsource/lato/700.css';
+import '@fontsource/lato/700-italic.css';
+import '../styles/global.css';
+import { SITE } from '../data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+  /** Hide redundant left brand & bottom copyright bar on the homepage */
+  isHome?: boolean;
+  /** Use wider container for 3-column Research grid & 2-column Biography layout */
+  wide?: boolean;
+}
+
+const {
+  title = SITE.title,
+  description = SITE.description,
+  canonicalPath = Astro.url.pathname,
+  isHome = false,
+  wide = false,
+} = Astro.props;
+
+const canonicalURL = new URL(canonicalPath, SITE.url);
+const currentPath = Astro.url.pathname;
+
+function isCurrent(href: string): boolean {
+  if (href === '/') return currentPath === '/';
+  return currentPath === href || currentPath.startsWith(href);
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {
+      SITE.enableWriting && (
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title={SITE.title}
+          href={new URL('/rss.xml', SITE.url)}
+        />
+      )
+    }
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+
+    <!-- Prevent theme flash on load -->
+    <script is:inline>
+      (function () {
+        const stored = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = stored || (prefersDark ? 'dark' : 'light');
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class:list={['container', 'header-inner', { 'container-wide': wide }]}>
+        {
+          isHome ? (
+            <span class="site-brand-spacer" aria-hidden="true" />
+          ) : (
+            <a href="/" class="site-brand">
+              {SITE.name}
+            </a>
+          )
+        }
+
+        <nav class="site-nav" aria-label="Primary">
+          {
+            SITE.nav.map((item) => (
+              <a
+                href={item.href}
+                class="nav-link"
+                aria-current={isCurrent(item.href) ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            ))
+          }
+
+          <div class="nav-tools">
+            <button
+              type="button"
+              class="icon-btn theme-toggle"
+              id="theme-toggle"
+              aria-label="Toggle color theme"
+              title="Toggle theme"
+            >
+              <!-- Moon icon (shown in light mode) -->
+              <svg
+                class="icon-moon"
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.9"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+              </svg>
+              <!-- Sun icon (shown in dark mode) -->
+              <svg
+                class="icon-sun"
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.9"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2"></path>
+                <path d="M12 20v2"></path>
+                <path d="m4.93 4.93 1.41 1.41"></path>
+                <path d="m17.66 17.66 1.41 1.41"></path>
+                <path d="M2 12h2"></path>
+                <path d="M20 12h2"></path>
+                <path d="m6.34 17.66-1.41 1.41"></path>
+                <path d="m19.07 4.93-1.41 1.41"></path>
+              </svg>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class:list={['container', 'animate-in', { 'container-wide': wide }]}>
+        <slot />
+      </div>
+    </main>
+
+    {
+      !isHome && (
+        <footer class="site-footer">
+          <div class:list={['container', 'footer-inner', { 'container-wide': wide }]}>
+            <span class="tabular-nums">
+              &copy; {new Date().getFullYear()} {SITE.name}. Last updated: {SITE.lastUpdated}.
+              {
+                SITE.enableWriting && (
+                  <>
+                    {' '}
+                    &middot; <a href="/rss.xml">RSS</a>
+                  </>
+                )
+              }
+            </span>
+          </div>
+        </footer>
+      )
+    }
+
+    <!-- Back to top button -->
+    <button
+      type="button"
+      class="back-to-top"
+      id="back-to-top"
+      aria-label="Back to top"
+      title="Back to top"
+    >
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="m18 15-6-6-6 6"></path>
+      </svg>
+    </button>
+
+    <script is:inline>
+      // Theme toggle
+      const themeToggle = document.getElementById('theme-toggle');
+      themeToggle?.addEventListener('click', () => {
+        const current = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = next;
+        localStorage.setItem('theme', next);
+      });
+
+      // Back to top button visibility
+      const backToTop = document.getElementById('back-to-top');
+      const updateScroll = () => {
+        if (backToTop) backToTop.classList.toggle('visible', window.scrollY > 280);
+      };
+      window.addEventListener('scroll', updateScroll, { passive: true });
+      updateScroll();
+      backToTop?.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    </script>
+  </body>
+</html>

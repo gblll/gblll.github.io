@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE, type ResearchProject } from '../../data/site';
+
+export function getStaticPaths() {
+  return SITE.research.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+interface Props {
+  project: ResearchProject;
+}
+
+const { project } = Astro.props;
+
+const relatedPubs = project.keyPublicationIds
+  .map((id) => SITE.publications.find((pub) => pub.id === id))
+  .filter((pub): pub is NonNullable<typeof pub> => Boolean(pub));
+
+const isVideoAsset = (src: string) => /\.(mp4|webm)(?:[?#].*)?$/i.test(src);
+---
+
+<BaseLayout
+  title={`${project.title} — ${SITE.name}`}
+  description={project.subtitle}
+>
+  <a href="/research/" class="back-link">&larr; Research</a>
+
+  <article>
+    <header class="article-header">
+      <h1 class="article-title">{project.title}</h1>
+      <p class="page-subtitle">{project.subtitle}</p>
+      <p class="project-role">{project.roleLine}</p>
+    </header>
+
+    {
+      project.heroImage && (
+        <figure class="project-hero-figure">
+          {isVideoAsset(project.heroImage) ? (
+            <video
+              src={project.heroImage}
+              autoplay
+              loop
+              muted
+              playsinline
+            />
+          ) : (
+            <img src={project.heroImage} alt={project.title} />
+          )}
+          {project.heroCaption && (
+            <figcaption class="project-hero-caption">{project.heroCaption}</figcaption>
+          )}
+        </figure>
+      )
+    }
+
+    <div class="prose prose-research">
+      {project.bodyHtml.map((html) => <p set:html={html} />)}
+    </div>
+
+    {
+      relatedPubs.length > 0 && (
+        <section class="project-pubs" aria-labelledby="key-pubs-heading">
+          <h2 id="key-pubs-heading">Key publications</h2>
+          <ul>
+            {relatedPubs.map((pub) => (
+              <li>
+                <a href={`/publications/#${pub.id}`}>{pub.title}</a>
+                <span>
+                  {' '}
+                  — <em>{pub.venue}</em> ({pub.year})
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+  </article>
+</BaseLayout>

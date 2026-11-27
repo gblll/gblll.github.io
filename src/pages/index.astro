@@ -1,0 +1,134 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PublicationRow from '../components/PublicationRow.astro';
+import SocialIcon from '../components/SocialIcon.astro';
+import { SITE } from '../data/site';
+import { getPublishedPosts, formatDate } from '../utils/writing';
+
+const recentNews = SITE.news.slice(0, SITE.homeNewsLimit);
+const homeSelectedPubs = SITE.selectedPublicationIds
+  .map((id) => SITE.publications.find((p) => p.id === id))
+  .filter((p): p is NonNullable<typeof p> => Boolean(p));
+const recentPosts = SITE.showWritingOnHome
+  ? (await getPublishedPosts()).slice(0, 3)
+  : [];
+---
+
+<BaseLayout title={SITE.title} description={SITE.description} isHome={true}>
+  <!-- Header: Name & Affiliation -->
+  <header class="about-header">
+    <h1 class="about-name">{SITE.displayName}</h1>
+    <p class="about-subtitle">
+      {SITE.role},{' '}
+      <a href={SITE.affiliationUrl} target="_blank" rel="noopener noreferrer">
+        {SITE.affiliation}
+      </a>
+    </p>
+  </header>
+
+  <!-- Bio wrapping right-floated monochrome circular portrait -->
+  <section class="about-body" aria-label="Biography">
+    <div class="profile-float">
+      <img
+        src={SITE.avatar}
+        alt={SITE.avatarAlt}
+        class="profile-avatar"
+        width="265"
+        height="265"
+      />
+    </div>
+
+    <div class="bio-copy">
+      {SITE.bioHtml.map((html) => <p set:html={html} />)}
+    </div>
+  </section>
+
+  <!-- Research Interests -->
+  <section class="home-section" aria-labelledby="interests-heading">
+    <h2 id="interests-heading" class="section-heading">Research Interests</h2>
+    <p class="interests-line">
+      {SITE.researchInterests.join(' · ')}
+    </p>
+  </section>
+
+  <!-- News (latest entries, linked to /news/) -->
+  <section class="home-section" aria-labelledby="news-heading">
+    <h2 id="news-heading" class="section-heading">
+      <a href="/news/">News</a>
+    </h2>
+    <table class="news-table">
+      <tbody>
+        {
+          recentNews.map((item) => (
+            <tr>
+              <th scope="row" class="news-date">
+                {item.date}
+              </th>
+              <td class="news-content" set:html={item.contentHtml} />
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Selected Publications (linked to /publications/) -->
+  <section class="home-section" aria-labelledby="publications-heading">
+    <h2 id="publications-heading" class="section-heading">
+      <a href="/publications/">Selected Publications</a>
+    </h2>
+    <ul class="pub-list">
+      {homeSelectedPubs.map((pub) => <PublicationRow pub={pub} />)}
+    </ul>
+    <p class="pub-footnote pub-footnote--compact">
+      <sup>†</sup>Equal contribution &nbsp;&middot;&nbsp; <sup>*</sup>Corresponding author
+    </p>
+  </section>
+
+  <!-- Occasional Writing (optional compact section) -->
+  {
+    recentPosts.length > 0 && (
+      <section class="home-section" aria-labelledby="writing-heading">
+        <h2 id="writing-heading" class="section-heading">
+          <a href="/writing/">Writing</a>
+        </h2>
+        <ul class="writing-list">
+          {recentPosts.map((post) => (
+            <li>
+              <a href={`/writing/${post.id}/`} class="writing-row">
+                <span class="writing-title">{post.data.title}</span>
+                <time
+                  class="writing-date"
+                  datetime={post.data.pubDate.toISOString()}
+                >
+                  {formatDate(post.data.pubDate)}
+                </time>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  <!-- Centered Bottom Monochrome Academic Logos -->
+  <section class="social-block" aria-label="Contact and academic profiles">
+    <div class="social-icons">
+      {
+        SITE.socials.map((item) => (
+          <a
+            href={item.href}
+            class="social-icon-link"
+            aria-label={item.label}
+            title={item.label}
+            target={item.external ? '_blank' : undefined}
+            rel={item.external ? 'noopener noreferrer' : undefined}
+          >
+            <SocialIcon type={item.icon} size={24} />
+          </a>
+        ))
+      }
+    </div>
+    <p class="contact-note">{SITE.contactNote}</p>
+  </section>
+</BaseLayout>

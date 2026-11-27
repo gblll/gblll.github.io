@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Portrait placeholder">
+  <defs>
+    <radialGradient id="studio" cx="50%" cy="38%" r="65%">
+      <stop offset="0%" stop-color="#f5f5f4"/>
+      <stop offset="70%" stop-color="#e7e7e4"/>
+      <stop offset="100%" stop-color="#d6d6d2"/>
+    </radialGradient>
+    <linearGradient id="silhouette" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3f3f46"/>
+      <stop offset="100%" stop-color="#18181b"/>
+    </linearGradient>
+    <clipPath id="circleClip">
+      <circle cx="200" cy="200" r="200"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#circleClip)">
+    <rect width="400" height="400" fill="url(#studio)"/>
+    <!-- Subtle editorial studio portrait silhouette -->
+    <circle cx="200" cy="148" r="56" fill="url(#silhouette)"/>
+    <path d="M 96 400 C 98 296, 138 242, 200 242 C 262 242, 302 296, 304 400 Z" fill="url(#silhouette)"/>
+    <!-- Subtle collar highlight -->
+    <path d="M 176 244 L 200 278 L 224 244" fill="none" stroke="#f4f4f5" stroke-width="3" stroke-opacity="0.28"/>
+  </g>
+</svg>

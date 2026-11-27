@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PublicationRow from '../components/PublicationRow.astro';
+import { SITE } from '../data/site';
+
+// Sort strictly by exact online publication date (newest first) and group by online year
+const sortedPubs = [...SITE.publications].sort((a, b) =>
+  b.onlineDate.localeCompare(a.onlineDate)
+);
+
+const grouped = sortedPubs.reduce<Record<number, typeof SITE.publications>>(
+  (acc, pub) => {
+    const onlineYear = Number(pub.onlineDate.slice(0, 4));
+    if (!acc[onlineYear]) acc[onlineYear] = [];
+    acc[onlineYear].push(pub);
+    return acc;
+  },
+  {}
+);
+
+const years = Object.keys(grouped)
+  .map(Number)
+  .sort((a, b) => b - a);
+---
+
+<BaseLayout
+  title={`Publications — ${SITE.name}`}
+  description={`Peer-reviewed articles, conference papers, and preprints by ${SITE.name}.`}
+>
+  <header class="page-header" style="margin-bottom: 1rem;">
+    <h1 class="page-title">Publications</h1>
+  </header>
+
+  <div>
+    {
+      years.map((year) => (
+        <section class="year-section" data-year-group={year}>
+          <div class="year-divider">
+            <span>{year}</span>
+          </div>
+          <ul class="pub-list">
+            {grouped[year].map((pub) => (
+              <PublicationRow pub={pub} withAnchor={true} showFullDate={true} />
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+  </div>
+
+  <p class="pub-footnote">
+    <sup>†</sup>Equal contribution &nbsp;&middot;&nbsp; <sup>*</sup>Corresponding author
+  </p>
+</BaseLayout>

@@ -1,0 +1,283 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750" fill="none">
+  <defs>
+    <!-- Acoustic Hotspot Radial Gradient -->
+    <radialGradient id="hotspot" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="22%" stop-color="#fef08a"/>
+      <stop offset="52%" stop-color="#f59e0b"/>
+      <stop offset="78%" stop-color="#0891b2" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#091526" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Soft White-Bg Focal Glow -->
+    <radialGradient id="focalGlowLight" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="35%" stop-color="#f59e0b" stop-opacity="0.92"/>
+      <stop offset="68%" stop-color="#d97706" stop-opacity="0.42"/>
+      <stop offset="100%" stop-color="#0e7490" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Broad Aberrated Spot -->
+    <radialGradient id="aberratedSpot" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.65"/>
+      <stop offset="55%" stop-color="#1d4ed8" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#091526" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Scientific Colorbar Vertical (Top=1.0, Bottom=0.0) -->
+    <linearGradient id="cbar" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#091526"/>
+      <stop offset="28%" stop-color="#1e3a8a"/>
+      <stop offset="55%" stop-color="#0891b2"/>
+      <stop offset="80%" stop-color="#f59e0b"/>
+      <stop offset="94%" stop-color="#fef08a"/>
+      <stop offset="100%" stop-color="#ffffff"/>
+    </linearGradient>
+    <!-- Cyan-Blue BeamCone Gradient -->
+    <linearGradient id="beamVertical" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0e7490" stop-opacity="0.30"/>
+      <stop offset="65%" stop-color="#06b6d4" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#d97706" stop-opacity="0.32"/>
+    </linearGradient>
+    <linearGradient id="beamHorizontal" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#235390" stop-opacity="0.28"/>
+      <stop offset="50%" stop-color="#06b6d4" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#d97706" stop-opacity="0.28"/>
+    </linearGradient>
+    <linearGradient id="oxfordGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2d66b3"/>
+      <stop offset="100%" stop-color="#193d6d"/>
+    </linearGradient>
+    <linearGradient id="tealGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0891b2"/>
+      <stop offset="100%" stop-color="#0e7490"/>
+    </linearGradient>
+    <linearGradient id="amberGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+    <linearGradient id="skullGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e2e8f0"/>
+      <stop offset="50%" stop-color="#cbd5e1"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <marker id="arrowSlate" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="#235390"/>
+    </marker>
+    <marker id="arrowTeal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="#0e7490"/>
+    </marker>
+    <marker id="arrowAmber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8.5 5 L 0 8.5 z" fill="#d97706"/>
+    </marker>
+    
+  </defs>
+  <rect width="1200" height="750" fill="#ffffff"/>
+  <line x1="622" y1="28" x2="622" y2="722" stroke="#e2e8f0" stroke-width="1.5"/>
+  <g font-family="Lato, Helvetica, Arial, sans-serif">
+    <text x="28" y="52" font-size="28" font-weight="800" fill="#1e293b">(a)</text>
+    <text x="72" y="51" font-size="22" font-weight="700" fill="#1e293b">Wearable Flexible Array &amp; Skull Phase Control</text>
+  </g>
+  <path d="M 74 388 Q 312 248 552 388 L 552 664 Q 312 696 74 664 Z" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.8"/>
+  <!-- Subtle brain gyri contours -->
+  <path d="M 118 465 Q 186 432 246 468 T 380 462 T 508 472" stroke="#e2e8f0" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+  <path d="M 106 535 Q 182 505 248 540 T 392 530 T 518 545" stroke="#e2e8f0" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+  <path d="M 138 618 Q 226 595 312 624 T 488 612" stroke="#e2e8f0" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+  <path d="M 122 320 Q 312 218 502 320 L 328 562 L 296 562 Z" fill="url(#beamVertical)"/>
+  <path d="M 136 326 L 248 594 M 488 326 L 372 586" stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 6"/>
+  <path d="M 68 358 Q 202 262 312 270 Q 426 278 558 360 L 542 396 Q 422 320 312 308 Q 198 296 84 392 Z" fill="url(#skullGrad)" stroke="#64748b" stroke-width="2.2"/>
+  <ellipse cx="106.3" cy="372.1" rx="5.5" ry="2.8" fill="#94a3b8" fill-opacity="0.55"/>
+  <ellipse cx="126.9" cy="349.4" rx="4.0" ry="2.8" fill="#94a3b8" fill-opacity="0.55"/>
+  <ellipse cx="147.4" cy="344.3" rx="4.0" ry="2.8" fill="#94a3b8" fill-opacity="0.55"/>
+  <ellipse cx="168.0" cy="324.8" rx="5.5" ry="2.8" fill="#94a3b8" fill-opacity="0.55"/>
+  <ellipse cx="188.6" cy="322.8" rx="4.0" ry="2.8" fill="#94a3b8" fill-opacity="0.55"/>
+  <ellipse cx="209.1" cy="306.3" rx="4.0" ry="2.8" fill="#94a3b8" fill-opacity="0.55"/>
+  <ellipse cx="229.7" cy="307.3" rx="5.5" ry="2.8" fill="#94a3b8" fill-opacity="0.55"/>
+  <ellipse cx="250.3" cy="293.9" rx="4.0" ry="2.8" fill="#94a3b8" fill-opacity="0.55"/>
+  <ellipse cx="270.9" cy="298.1" rx="4.0" ry="2.8" fill="#94a3b8" fill-opacity="0.55"/>
+  <ellipse cx="291.4" cy="287.8" rx="5.5" ry="2.8" fill="#94a3b8" fill-opacity="0.55"/>
+  <ellipse cx="312.0" cy="295.0" rx="4.0" ry="2.8" fill="#94a3b8" fill-opacity="0.55"/>
+  <ellipse cx="332.6" cy="287.8" rx="4.0" ry="2.8" fill="#94a3b8" fill-opacity="0.55"/>
+  <ellipse cx="353.1" cy="298.1" rx="5.5" ry="2.8" fill="#94a3b8" fill-opacity="0.55"/>
+  <ellipse cx="373.7" cy="293.9" rx="4.0" ry="2.8" fill="#94a3b8" fill-opacity="0.55"/>
+  <ellipse cx="394.3" cy="307.3" rx="4.0" ry="2.8" fill="#94a3b8" fill-opacity="0.55"/>
+  <ellipse cx="414.9" cy="306.3" rx="5.5" ry="2.8" fill="#94a3b8" fill-opacity="0.55"/>
+  <ellipse cx="435.4" cy="322.8" rx="4.0" ry="2.8" fill="#94a3b8" fill-opacity="0.55"/>
+  <ellipse cx="456.0" cy="324.8" rx="4.0" ry="2.8" fill="#94a3b8" fill-opacity="0.55"/>
+  <ellipse cx="476.6" cy="344.3" rx="5.5" ry="2.8" fill="#94a3b8" fill-opacity="0.55"/>
+  <ellipse cx="497.1" cy="349.4" rx="4.0" ry="2.8" fill="#94a3b8" fill-opacity="0.55"/>
+  <ellipse cx="517.7" cy="372.1" rx="4.0" ry="2.8" fill="#94a3b8" fill-opacity="0.55"/>
+  <path d="M 96 326 Q 202 244 312 251 Q 424 258 530 329 L 520 348 Q 420 279 312 272 Q 202 265 106 345 Z" fill="#0e7490" fill-opacity="0.22" stroke="#0e7490" stroke-width="2.2"/>
+  <line x1="118.0" y1="312.0" x2="118.0" y2="283.2" stroke="#235390" stroke-width="5" stroke-linecap="round" opacity="0.82"/>
+  <circle cx="118.0" cy="283.2" r="3.5" fill="#d97706"/>
+  <g transform="translate(118.0,334.0) rotate(-37.0)">
+    <rect x="-10" y="-6" width="20" height="12" rx="2.5" fill="url(#oxfordGrad)" stroke="#ffffff" stroke-width="1.2"/>
+    <rect x="-7" y="-2.5" width="14" height="5" rx="1" fill="#f59e0b"/>
+  </g>
+  <line x1="145.7" y1="293.9" x2="145.7" y2="261.6" stroke="#235390" stroke-width="5" stroke-linecap="round" opacity="0.82"/>
+  <circle cx="145.7" cy="261.6" r="3.5" fill="#d97706"/>
+  <g transform="translate(145.7,315.9) rotate(-32.8)">
+    <rect x="-10" y="-6" width="20" height="12" rx="2.5" fill="url(#oxfordGrad)" stroke="#ffffff" stroke-width="1.2"/>
+    <rect x="-7" y="-2.5" width="14" height="5" rx="1" fill="#f59e0b"/>
+  </g>
+  <line x1="173.4" y1="278.6" x2="173.4" y2="244.6" stroke="#235390" stroke-width="5" stroke-linecap="round" opacity="0.82"/>
+  <circle cx="173.4" cy="244.6" r="3.5" fill="#d97706"/>
+  <g transform="translate(173.4,300.6) rotate(-28.3)">
+    <rect x="-10" y="-6" width="20" height="12" rx="2.5" fill="url(#oxfordGrad)" stroke="#ffffff" stroke-width="1.2"/>
+    <rect x="-7" y="-2.5" width="14" height="5" rx="1" fill="#f59e0b"/>
+  </g>
+  <line x1="201.1" y1="265.8" x2="201.1" y2="231.6" stroke="#235390" stroke-width="5" stroke-linecap="round" opacity="0.82"/>
+  <circle cx="201.1" cy="231.6" r="3.5" fill="#d97706"/>
+  <g transform="translate(201.1,287.8) rotate(-23.3)">
+    <rect x="-10" y="-6" width="20" height="12" rx="2.5" fill="url(#oxfordGrad)" stroke="#ffffff" stroke-width="1.2"/>
+    <rect x="-7" y="-2.5" width="14" height="5" rx="1" fill="#f59e0b"/>
+  </g>
+  <line x1="228.9" y1="255.3" x2="228.9" y2="221.8" stroke="#235390" stroke-width="5" stroke-linecap="round" opacity="0.82"/>
+  <circle cx="228.9" cy="221.8" r="3.5" fill="#d97706"/>
+  <g transform="translate(228.9,277.3) rotate(-17.9)">
+    <rect x="-10" y="-6" width="20" height="12" rx="2.5" fill="url(#oxfordGrad)" stroke="#ffffff" stroke-width="1.2"/>
+    <rect x="-7" y="-2.5" width="14" height="5" rx="1" fill="#f59e0b"/>
+  </g>
+  <line x1="256.6" y1="247.3" x2="256.6" y2="214.4" stroke="#235390" stroke-width="5" stroke-linecap="round" opacity="0.82"/>
+  <circle cx="256.6" cy="214.4" r="3.5" fill="#d97706"/>
+  <g transform="translate(256.6,269.3) rotate(-12.1)">
+    <rect x="-10" y="-6" width="20" height="12" rx="2.5" fill="url(#oxfordGrad)" stroke="#ffffff" stroke-width="1.2"/>
+    <rect x="-7" y="-2.5" width="14" height="5" rx="1" fill="#f59e0b"/>
+  </g>
+  <line x1="284.3" y1="241.8" x2="284.3" y2="209.1" stroke="#235390" stroke-width="5" stroke-linecap="round" opacity="0.82"/>
+  <circle cx="284.3" cy="209.1" r="3.5" fill="#d97706"/>
+  <g transform="translate(284.3,263.8) rotate(-6.1)">
+    <rect x="-10" y="-6" width="20" height="12" rx="2.5" fill="url(#oxfordGrad)" stroke="#ffffff" stroke-width="1.2"/>
+    <rect x="-7" y="-2.5" width="14" height="5" rx="1" fill="#f59e0b"/>
+  </g>
+  <line x1="312.0" y1="239.0" x2="312.0" y2="205.6" stroke="#235390" stroke-width="5" stroke-linecap="round" opacity="0.82"/>
+  <circle cx="312.0" cy="205.6" r="3.5" fill="#d97706"/>
+  <g transform="translate(312.0,261.0) rotate(0.0)">
+    <rect x="-10" y="-6" width="20" height="12" rx="2.5" fill="url(#oxfordGrad)" stroke="#ffffff" stroke-width="1.2"/>
+    <rect x="-7" y="-2.5" width="14" height="5" rx="1" fill="#f59e0b"/>
+  </g>
+  <line x1="339.7" y1="239.2" x2="339.7" y2="204.4" stroke="#235390" stroke-width="5" stroke-linecap="round" opacity="0.82"/>
+  <circle cx="339.7" cy="204.4" r="3.5" fill="#d97706"/>
+  <g transform="translate(339.7,261.2) rotate(6.1)">
+    <rect x="-10" y="-6" width="20" height="12" rx="2.5" fill="url(#oxfordGrad)" stroke="#ffffff" stroke-width="1.2"/>
+    <rect x="-7" y="-2.5" width="14" height="5" rx="1" fill="#f59e0b"/>
+  </g>
+  <line x1="367.4" y1="242.6" x2="367.4" y2="206.2" stroke="#235390" stroke-width="5" stroke-linecap="round" opacity="0.82"/>
+  <circle cx="367.4" cy="206.2" r="3.5" fill="#d97706"/>
+  <g transform="translate(367.4,264.6) rotate(12.1)">
+    <rect x="-10" y="-6" width="20" height="12" rx="2.5" fill="url(#oxfordGrad)" stroke="#ffffff" stroke-width="1.2"/>
+    <rect x="-7" y="-2.5" width="14" height="5" rx="1" fill="#f59e0b"/>
+  </g>
+  <line x1="395.1" y1="249.5" x2="395.1" y2="211.8" stroke="#235390" stroke-width="5" stroke-linecap="round" opacity="0.82"/>
+  <circle cx="395.1" cy="211.8" r="3.5" fill="#d97706"/>
+  <g transform="translate(395.1,271.5) rotate(17.9)">
+    <rect x="-10" y="-6" width="20" height="12" rx="2.5" fill="url(#oxfordGrad)" stroke="#ffffff" stroke-width="1.2"/>
+    <rect x="-7" y="-2.5" width="14" height="5" rx="1" fill="#f59e0b"/>
+  </g>
+  <line x1="422.9" y1="259.9" x2="422.9" y2="222.0" stroke="#235390" stroke-width="5" stroke-linecap="round" opacity="0.82"/>
+  <circle cx="422.9" cy="222.0" r="3.5" fill="#d97706"/>
+  <g transform="translate(422.9,281.9) rotate(23.3)">
+    <rect x="-10" y="-6" width="20" height="12" rx="2.5" fill="url(#oxfordGrad)" stroke="#ffffff" stroke-width="1.2"/>
+    <rect x="-7" y="-2.5" width="14" height="5" rx="1" fill="#f59e0b"/>
+  </g>
+  <line x1="450.6" y1="273.9" x2="450.6" y2="237.4" stroke="#235390" stroke-width="5" stroke-linecap="round" opacity="0.82"/>
+  <circle cx="450.6" cy="237.4" r="3.5" fill="#d97706"/>
+  <g transform="translate(450.6,295.9) rotate(28.3)">
+    <rect x="-10" y="-6" width="20" height="12" rx="2.5" fill="url(#oxfordGrad)" stroke="#ffffff" stroke-width="1.2"/>
+    <rect x="-7" y="-2.5" width="14" height="5" rx="1" fill="#f59e0b"/>
+  </g>
+  <line x1="478.3" y1="291.3" x2="478.3" y2="258.4" stroke="#235390" stroke-width="5" stroke-linecap="round" opacity="0.82"/>
+  <circle cx="478.3" cy="258.4" r="3.5" fill="#d97706"/>
+  <g transform="translate(478.3,313.3) rotate(32.8)">
+    <rect x="-10" y="-6" width="20" height="12" rx="2.5" fill="url(#oxfordGrad)" stroke="#ffffff" stroke-width="1.2"/>
+    <rect x="-7" y="-2.5" width="14" height="5" rx="1" fill="#f59e0b"/>
+  </g>
+  <line x1="506.0" y1="312.0" x2="506.0" y2="284.7" stroke="#235390" stroke-width="5" stroke-linecap="round" opacity="0.82"/>
+  <circle cx="506.0" cy="284.7" r="3.5" fill="#d97706"/>
+  <g transform="translate(506.0,334.0) rotate(37.0)">
+    <rect x="-10" y="-6" width="20" height="12" rx="2.5" fill="url(#oxfordGrad)" stroke="#ffffff" stroke-width="1.2"/>
+    <rect x="-7" y="-2.5" width="14" height="5" rx="1" fill="#f59e0b"/>
+  </g>
+  <polyline points="118.0,283.2 145.7,261.6 173.4,244.6 201.1,231.6 228.9,221.8 256.6,214.4 284.3,209.1 312.0,205.6 339.7,204.4 367.4,206.2 395.1,211.8 422.9,222.0 450.6,237.4 478.3,258.4 506.0,284.7" stroke="#d97706" stroke-width="2.2" fill="none"/>
+  <path d="M 215.8 373.1 A 212 212 0 0 1 408.2 373.1" stroke="#0e7490" stroke-width="2.6" stroke-opacity="0.44" fill="none"/>
+  <path d="M 234.8 410.5 A 170 170 0 0 1 389.2 410.5" stroke="#0e7490" stroke-width="2.6" stroke-opacity="0.55" fill="none"/>
+  <path d="M 253.9 448.0 A 128 128 0 0 1 370.1 448.0" stroke="#0e7490" stroke-width="2.6" stroke-opacity="0.66" fill="none"/>
+  <path d="M 273.0 485.4 A 86 86 0 0 1 351.0 485.4" stroke="#0e7490" stroke-width="2.6" stroke-opacity="0.77" fill="none"/>
+  <path d="M 291.1 521.0 A 46 46 0 0 1 332.9 521.0" stroke="#0e7490" stroke-width="2.6" stroke-opacity="0.88" fill="none"/>
+  <ellipse cx="312" cy="562" rx="28" ry="50" fill="url(#focalGlowLight)"/>
+  <ellipse cx="312" cy="562" rx="9" ry="21" fill="#d97706"/>
+  <ellipse cx="312" cy="562" rx="4" ry="10" fill="#fef08a"/>
+  <rect x="32" y="88" width="204" height="64" rx="9" fill="#f8fafc" stroke="#235390" stroke-width="2"/>
+  <path d="M 52 122 L 64 102 L 62 118 L 74 118 L 60 140 L 63 124 Z" fill="#d97706"/>
+  <text x="82" y="116" font-family="Lato, Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#235390">Self-Powered</text>
+  <text x="82" y="140" font-family="Lato, Helvetica, Arial, sans-serif" font-size="18" font-weight="500" fill="#475569">Piezo Harvester</text>
+  <path d="M 118 152 L 118 298" stroke="#235390" stroke-width="2.2" stroke-dasharray="5 4" marker-end="url(#arrowBlue)"/>
+  <g font-family="Lato, Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#1e293b">
+    <text x="392" y="128" text-anchor="middle" fill="#b45309">Phase Delay Profile Δφₙ</text>
+    <line x1="362" y1="138" x2="342" y2="196" stroke="#d97706" stroke-width="2"/>
+
+    <text x="502" y="196" text-anchor="middle" fill="#0e7490">Conformal Patch</text>
+    <line x1="488" y1="206" x2="454" y2="278" stroke="#0e7490" stroke-width="2"/>
+
+    <text x="486" y="432" text-anchor="middle" fill="#475569">Curved Skull</text>
+    <line x1="492" y1="408" x2="508" y2="366" stroke="#64748b" stroke-width="2"/>
+
+    <text x="382" y="556" fill="#b45309">Intracranial Focus</text>
+    <text x="382" y="582" font-size="18" font-weight="600" fill="#475569">Aberration-Corrected</text>
+    <line x1="376" y1="562" x2="336" y2="562" stroke="#d97706" stroke-width="2"/>
+
+    <text x="92" y="644" font-size="18" font-weight="600" fill="#64748b">Brain Tissue</text>
+  </g>
+  <g font-family="Lato, Helvetica, Arial, sans-serif">
+    <text x="646" y="52" font-size="28" font-weight="800" fill="#1e293b">(b)</text>
+    <text x="690" y="51" font-size="22" font-weight="700" fill="#1e293b">3D Hydrophone Mapping &amp; Focal Profile</text>
+  </g>
+  <rect x="700" y="88" width="396" height="280" rx="6" fill="#091526" stroke="#334155" stroke-width="2"/>
+  <line x1="799.0" y1="88" x2="799.0" y2="368" stroke="#1e3a8a" stroke-width="1" stroke-opacity="0.45"/>
+  <line x1="898.0" y1="88" x2="898.0" y2="368" stroke="#1e3a8a" stroke-width="1" stroke-opacity="0.45"/>
+  <line x1="997.0" y1="88" x2="997.0" y2="368" stroke="#1e3a8a" stroke-width="1" stroke-opacity="0.45"/>
+  <line x1="700" y1="158.0" x2="1096" y2="158.0" stroke="#1e3a8a" stroke-width="1" stroke-opacity="0.45"/>
+  <line x1="700" y1="228.0" x2="1096" y2="228.0" stroke="#1e3a8a" stroke-width="1" stroke-opacity="0.45"/>
+  <line x1="700" y1="298.0" x2="1096" y2="298.0" stroke="#1e3a8a" stroke-width="1" stroke-opacity="0.45"/>
+  <path d="M 728 150 Q 898 114 1068 150" stroke="#94a3b8" stroke-width="2.5" stroke-dasharray="7 5" fill="none"/>
+  <text x="716" y="120" font-family="Lato, Helvetica, Arial, sans-serif" font-size="18" font-weight="600" fill="#cbd5e1">Skull Interface</text>
+  <ellipse cx="898" cy="266" rx="96" ry="74" fill="url(#aberratedSpot)"/>
+  <ellipse cx="898" cy="266" rx="34" ry="72" fill="url(#hotspot)"/>
+  <ellipse cx="852" cy="270" rx="12" ry="34" fill="#0891b2" fill-opacity="0.42"/>
+  <ellipse cx="944" cy="270" rx="12" ry="34" fill="#0891b2" fill-opacity="0.42"/>
+  <line x1="1042" y1="102" x2="1042" y2="174" stroke="#e2e8f0" stroke-width="3"/>
+  <polygon points="1037,174 1047,174 1042,192" fill="#f59e0b"/>
+  <text x="1030" y="122" text-anchor="end" font-family="Lato, Helvetica, Arial, sans-serif" font-size="18" font-weight="600" fill="#fef08a">3D Hydrophone</text>
+  <text x="716" y="352" font-family="Lato, Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#ffffff">x–z Acoustic Field</text>
+  <rect x="1112" y="88" width="20" height="280" rx="3" fill="url(#cbar)" stroke="#334155" stroke-width="1.5"/>
+  <g font-family="Lato, Helvetica, Arial, sans-serif" font-size="18" font-weight="600" fill="#334155">
+    <text x="1140" y="104">1.0</text>
+    <text x="1140" y="234">0.5</text>
+    <text x="1140" y="368">0.0</text>
+    <text x="676" y="228" text-anchor="middle" transform="rotate(-90 676 228)">Axial z (mm)</text>
+  </g>
+  <rect x="716" y="430" width="424" height="238" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+  <line x1="716" y1="549.0" x2="1140" y2="549.0" stroke="#e2e8f0" stroke-width="1.5" stroke-dasharray="5 5"/>
+  <line x1="928.0" y1="430" x2="928.0" y2="668" stroke="#e2e8f0" stroke-width="1.5"/>
+  <polyline points="716,430 716,668 1140,668" stroke="#334155" stroke-width="2.2" fill="none"/>
+  <polygon points="716.0,668.0 716.0,661.3 718.6,661.3 721.3,661.3 724.0,661.3 726.6,661.3 729.2,661.3 731.9,661.3 734.5,661.2 737.2,661.2 739.9,661.2 742.5,661.2 745.1,661.2 747.8,661.3 750.5,661.3 753.1,661.3 755.8,661.3 758.4,661.3 761.0,661.2 763.7,661.1 766.4,661.1 769.0,661.1 771.6,661.1 774.3,661.2 777.0,661.2 779.6,661.3 782.2,661.3 784.9,661.3 787.5,661.2 790.2,661.1 792.9,660.9 795.5,660.8 798.1,660.8 800.8,660.8 803.5,661.0 806.1,661.1 808.8,661.3 811.4,661.3 814.0,661.3 816.7,661.1 819.4,660.8 822.0,660.5 824.6,660.2 827.3,660.1 830.0,660.3 832.6,660.5 835.2,660.9 837.9,661.2 840.5,661.3 843.2,661.2 845.9,660.7 848.5,660.1 851.1,659.3 853.8,658.7 856.5,658.5 859.1,658.7 861.8,659.4 864.4,660.2 867.0,661.0 869.7,661.3 872.4,660.9 875.0,659.7 877.6,657.7 880.3,655.4 883.0,653.4 885.6,652.3 888.2,652.5 890.9,654.3 893.5,657.1 896.2,660.0 898.9,661.3 901.5,659.4 904.1,652.4 906.8,639.1 909.5,619.1 912.1,593.1 914.8,562.8 917.4,531.0 920.0,501.1 922.7,476.6 925.4,460.5 928.0,454.9 930.6,460.5 933.3,476.6 936.0,501.1 938.6,531.0 941.2,562.8 943.9,593.1 946.5,619.1 949.2,639.1 951.9,652.4 954.5,659.4 957.1,661.3 959.8,660.0 962.5,657.1 965.1,654.3 967.8,652.5 970.4,652.3 973.0,653.4 975.7,655.4 978.4,657.7 981.0,659.7 983.6,660.9 986.3,661.3 989.0,661.0 991.6,660.2 994.2,659.4 996.9,658.7 999.5,658.5 1002.2,658.7 1004.9,659.3 1007.5,660.1 1010.1,660.7 1012.8,661.2 1015.5,661.3 1018.1,661.2 1020.8,660.9 1023.4,660.5 1026.0,660.3 1028.7,660.1 1031.3,660.2 1034.0,660.5 1036.7,660.8 1039.3,661.1 1042.0,661.3 1044.6,661.3 1047.2,661.3 1049.9,661.1 1052.5,661.0 1055.2,660.8 1057.8,660.8 1060.5,660.8 1063.2,660.9 1065.8,661.1 1068.5,661.2 1071.1,661.3 1073.8,661.3 1076.4,661.3 1079.0,661.2 1081.7,661.2 1084.3,661.1 1087.0,661.1 1089.7,661.1 1092.3,661.1 1095.0,661.2 1097.6,661.3 1100.2,661.3 1102.9,661.3 1105.5,661.3 1108.2,661.3 1110.8,661.2 1113.5,661.2 1116.2,661.2 1118.8,661.2 1121.5,661.2 1124.1,661.3 1126.8,661.3 1129.4,661.3 1132.0,661.3 1134.7,661.3 1137.3,661.3 1140.0,661.3 1140.0,668.0" fill="#235390" fill-opacity="0.10"/>
+  <polyline points="716.0,658.6 718.6,658.6 721.3,658.5 724.0,658.4 726.6,658.2 729.2,658.1 731.9,657.9 734.5,657.7 737.2,657.5 739.9,657.2 742.5,657.0 745.1,656.6 747.8,656.3 750.5,655.9 753.1,655.4 755.8,654.9 758.4,654.4 761.0,653.7 763.7,653.0 766.4,652.3 769.0,651.5 771.6,650.5 774.3,649.5 777.0,648.5 779.6,647.3 782.2,646.0 784.9,644.6 787.5,643.1 790.2,641.5 792.9,639.8 795.5,638.0 798.1,636.1 800.8,634.1 803.5,631.9 806.1,629.7 808.8,627.3 811.4,624.9 814.0,622.3 816.7,619.7 819.4,616.9 822.0,614.1 824.6,611.3 827.3,608.3 830.0,605.4 832.6,602.4 835.2,599.4 837.9,596.4 840.5,593.4 843.2,590.4 845.9,587.5 848.5,584.6 851.1,581.8 853.8,579.1 856.5,576.5 859.1,574.0 861.8,571.7 864.4,569.5 867.0,567.5 869.7,565.6 872.4,563.9 875.0,562.4 877.6,561.1 880.3,560.0 883.0,559.1 885.6,558.3 888.2,557.8 890.9,557.4 893.5,557.3 896.2,557.3 898.9,557.4 901.5,557.7 904.1,558.2 906.8,558.8 909.5,559.5 912.1,560.2 914.8,561.1 917.4,562.0 920.0,563.0 922.7,563.9 925.4,564.9 928.0,565.9 930.6,566.9 933.3,567.9 936.0,568.8 938.6,569.7 941.2,570.6 943.9,571.4 946.5,572.2 949.2,572.9 951.9,573.6 954.5,574.2 957.1,574.8 959.8,575.4 962.5,576.0 965.1,576.6 967.8,577.3 970.4,577.9 973.0,578.6 975.7,579.3 978.4,580.2 981.0,581.0 983.6,582.0 986.3,583.1 989.0,584.3 991.6,585.6 994.2,587.0 996.9,588.6 999.5,590.2 1002.2,592.0 1004.9,593.9 1007.5,595.9 1010.1,598.0 1012.8,600.2 1015.5,602.5 1018.1,604.9 1020.8,607.3 1023.4,609.7 1026.0,612.2 1028.7,614.7 1031.3,617.2 1034.0,619.7 1036.7,622.2 1039.3,624.6 1042.0,627.0 1044.6,629.3 1047.2,631.5 1049.9,633.7 1052.5,635.7 1055.2,637.7 1057.8,639.6 1060.5,641.4 1063.2,643.1 1065.8,644.6 1068.5,646.1 1071.1,647.4 1073.8,648.7 1076.4,649.8 1079.0,650.9 1081.7,651.8 1084.3,652.7 1087.0,653.5 1089.7,654.2 1092.3,654.8 1095.0,655.4 1097.6,655.9 1100.2,656.4 1102.9,656.8 1105.5,657.1 1108.2,657.4 1110.8,657.7 1113.5,657.9 1116.2,658.1 1118.8,658.2 1121.5,658.4 1124.1,658.5 1126.8,658.6 1129.4,658.7 1132.0,658.8 1134.7,658.8 1137.3,658.9 1140.0,658.9" stroke="#64748b" stroke-width="2.8" stroke-dasharray="8 6" fill="none"/>
+  <polyline points="716.0,661.3 718.6,661.3 721.3,661.3 724.0,661.3 726.6,661.3 729.2,661.3 731.9,661.3 734.5,661.2 737.2,661.2 739.9,661.2 742.5,661.2 745.1,661.2 747.8,661.3 750.5,661.3 753.1,661.3 755.8,661.3 758.4,661.3 761.0,661.2 763.7,661.1 766.4,661.1 769.0,661.1 771.6,661.1 774.3,661.2 777.0,661.2 779.6,661.3 782.2,661.3 784.9,661.3 787.5,661.2 790.2,661.1 792.9,660.9 795.5,660.8 798.1,660.8 800.8,660.8 803.5,661.0 806.1,661.1 808.8,661.3 811.4,661.3 814.0,661.3 816.7,661.1 819.4,660.8 822.0,660.5 824.6,660.2 827.3,660.1 830.0,660.3 832.6,660.5 835.2,660.9 837.9,661.2 840.5,661.3 843.2,661.2 845.9,660.7 848.5,660.1 851.1,659.3 853.8,658.7 856.5,658.5 859.1,658.7 861.8,659.4 864.4,660.2 867.0,661.0 869.7,661.3 872.4,660.9 875.0,659.7 877.6,657.7 880.3,655.4 883.0,653.4 885.6,652.3 888.2,652.5 890.9,654.3 893.5,657.1 896.2,660.0 898.9,661.3 901.5,659.4 904.1,652.4 906.8,639.1 909.5,619.1 912.1,593.1 914.8,562.8 917.4,531.0 920.0,501.1 922.7,476.6 925.4,460.5 928.0,454.9 930.6,460.5 933.3,476.6 936.0,501.1 938.6,531.0 941.2,562.8 943.9,593.1 946.5,619.1 949.2,639.1 951.9,652.4 954.5,659.4 957.1,661.3 959.8,660.0 962.5,657.1 965.1,654.3 967.8,652.5 970.4,652.3 973.0,653.4 975.7,655.4 978.4,657.7 981.0,659.7 983.6,660.9 986.3,661.3 989.0,661.0 991.6,660.2 994.2,659.4 996.9,658.7 999.5,658.5 1002.2,658.7 1004.9,659.3 1007.5,660.1 1010.1,660.7 1012.8,661.2 1015.5,661.3 1018.1,661.2 1020.8,660.9 1023.4,660.5 1026.0,660.3 1028.7,660.1 1031.3,660.2 1034.0,660.5 1036.7,660.8 1039.3,661.1 1042.0,661.3 1044.6,661.3 1047.2,661.3 1049.9,661.1 1052.5,661.0 1055.2,660.8 1057.8,660.8 1060.5,660.8 1063.2,660.9 1065.8,661.1 1068.5,661.2 1071.1,661.3 1073.8,661.3 1076.4,661.3 1079.0,661.2 1081.7,661.2 1084.3,661.1 1087.0,661.1 1089.7,661.1 1092.3,661.1 1095.0,661.2 1097.6,661.3 1100.2,661.3 1102.9,661.3 1105.5,661.3 1108.2,661.3 1110.8,661.2 1113.5,661.2 1116.2,661.2 1118.8,661.2 1121.5,661.2 1124.1,661.3 1126.8,661.3 1129.4,661.3 1132.0,661.3 1134.7,661.3 1137.3,661.3 1140.0,661.3" stroke="#235390" stroke-width="3.6" fill="none"/>
+  <circle cx="928.0" cy="454.9" r="6" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+  <g font-family="Lato, Helvetica, Arial, sans-serif" font-size="18" font-weight="600" fill="#334155">
+    <line x1="732" y1="458" x2="766" y2="458" stroke="#235390" stroke-width="3.6"/>
+    <text x="774" y="464" fill="#235390" font-weight="700">Compensated</text>
+    <line x1="732" y1="486" x2="766" y2="486" stroke="#64748b" stroke-width="2.8" stroke-dasharray="7 5"/>
+    <text x="774" y="492" fill="#64748b">Aberrated</text>
+
+    <text x="706" y="448" text-anchor="end">1.0</text>
+    <text x="706" y="555" text-anchor="end">0.5</text>
+    <text x="706" y="668" text-anchor="end">0.0</text>
+    <text x="668" y="549" text-anchor="middle" transform="rotate(-90 668 549)">|P| / |P₀|</text>
+
+    <text x="728" y="696" text-anchor="middle">-12</text>
+    <text x="928" y="696" text-anchor="middle">0</text>
+    <text x="1128" y="696" text-anchor="middle">+12</text>
+    <text x="928" y="724" text-anchor="middle" font-weight="700">Lateral Position x (mm)</text>
+  </g>
+</svg>

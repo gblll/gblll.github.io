@@ -1,0 +1,87 @@
+---
+import { SITE, type PublicationItem } from '../data/site';
+
+interface Props {
+  pub: PublicationItem;
+  /** Render unique anchor id on /publications/ page (omit on homepage to prevent duplicate IDs) */
+  withAnchor?: boolean;
+  /** Show exact online publication date (e.g. "Aug 04, 2026") on /publications/; year-only on homepage */
+  showFullDate?: boolean;
+}
+
+const { pub, withAnchor = false, showFullDate = false } = Astro.props;
+const selfNames = new Set(SITE.authorSelfVariants.map((n) => n.toLowerCase()));
+const coFirstNames = new Set((pub.coFirstAuthors ?? []).map((n) => n.toLowerCase()));
+const corrNames = new Set((pub.correspondingAuthors ?? []).map((n) => n.toLowerCase()));
+
+function getAuthorMarks(author: string): string {
+  const key = author.toLowerCase();
+  const marks: string[] = [];
+  if (coFirstNames.has(key)) marks.push('†');
+  if (corrNames.has(key)) marks.push('*');
+  return marks.join('');
+}
+
+function formatOnlineDate(isoDate: string): string {
+  const [y, m, d] = isoDate.split('-').map(Number);
+  return new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: '2-digit',
+    timeZone: 'UTC',
+  }).format(new Date(Date.UTC(y, m - 1, d)));
+}
+
+const dateLabel = showFullDate ? formatOnlineDate(pub.onlineDate) : `${pub.year}`;
+const searchBlob =
+  `${pub.title} ${pub.authors.join(' ')} ${pub.venue} ${pub.volumeInfo ?? ''} ${pub.year} ${dateLabel} ${pub.award ?? ''}`.toLowerCase();
+---
+
+<li class="pub-item" id={withAnchor ? pub.id : undefined} data-search={searchBlob}>
+  <div class="pub-title">{pub.title}</div>
+
+  <div class="pub-authors">
+    {
+      pub.authors.map((author, idx) => {
+        const marks = getAuthorMarks(author);
+        return (
+          <>
+            {selfNames.has(author.toLowerCase()) ? (
+              <span class="pub-author-self">{author}</span>
+            ) : (
+              <span>{author}</span>
+            )}
+            {marks && <sup class="pub-author-mark">{marks}</sup>}
+            {idx < pub.authors.length - 1 ? ', ' : '. '}
+          </>
+        );
+      })
+    }<span class="pub-venue"><em>{pub.venue}</em>{pub.volumeInfo ? <span class="pub-venue-meta">, {pub.volumeInfo}</span> : null}<span class="pub-venue-meta"> ({dateLabel})</span></span>
+  </div>
+
+  {pub.award && <div class="pub-award">&#127942; {pub.award}</div>}
+
+  {
+    (pub.links.length > 0 || pub.bibtex) && (
+      <div class="pub-links">
+        {pub.links.map((link) => (
+          <a
+            href={link.href}
+            class="pub-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {link.label}
+          </a>
+        ))}
+
+        {pub.bibtex && (
+          <details class="bibtex-details">
+            <summary class="bibtex-summary">BibTeX</summary>
+            <pre class="bibtex-block"><code>{pub.bibtex}</code></pre>
+          </details>
+        )}
+      </div>
+    )
+  }
+</li>

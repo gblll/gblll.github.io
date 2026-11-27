@@ -1,0 +1,443 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../data/site';
+
+const {
+  contact,
+  experience,
+  education,
+  awards,
+  presentations,
+  patents,
+  skills,
+  interests,
+} = SITE.biography;
+
+const tocSections = [
+  { id: 'contact-information', label: 'Contact Information' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'education', label: 'Education' },
+  { id: 'awards', label: 'Awards' },
+  { id: 'conference-presentations', label: 'Conference Presentations' },
+  { id: 'patents', label: 'Patents' },
+  { id: 'skills-techniques', label: 'Skills & Techniques' },
+  { id: 'interests', label: 'Interests' },
+];
+
+function splitLocation(loc: string): [string, string] {
+  const idx = loc.indexOf(',');
+  if (idx === -1) return [loc, ''];
+  return [loc.slice(0, idx).trim(), loc.slice(idx + 1).trim()];
+}
+---
+
+<BaseLayout
+  title={`Biography — ${SITE.name}`}
+  description={`Curriculum Vitae and Biography of ${SITE.displayName}.`}
+  wide={true}
+>
+  <div class="bio-layout">
+    <!-- Left Sticky Table of Contents -->
+    <aside class="toc-sidebar no-print" aria-label="Table of contents">
+      <ul class="toc-list">
+        {
+          tocSections.map((sec, idx) => (
+            <li>
+              <a
+                href={`#${sec.id}`}
+                class:list={['toc-link', { active: idx === 0 }]}
+                data-toc-target={sec.id}
+              >
+                {sec.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </aside>
+
+    <!-- Right Stacked Academic Cards -->
+    <div>
+      <header class="bio-header-row">
+        <h1 class="page-title" style="margin-bottom: 0;">Biography</h1>
+
+        {
+          SITE.cvPdfUrl ? (
+            <a
+              href={SITE.cvPdfUrl}
+              class="pdf-icon-btn no-print"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Download CV PDF"
+              aria-label="Download CV PDF"
+            >
+              <svg width="38" height="38" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true">
+                <path d="M181.9 256.1c-5-16-4.9-46.9-2-46.9 8.4 0 7.6 36.9 2 46.9zm-1.7 47.2c-7.7 20.2-17.3 43.3-28.4 62.7 18.3-7 39-17.2 62.9-21.9-12.7-9.6-24.9-23.4-34.5-40.8zM86.1 428.1c0 .8 13.2-5.4 34.9-40.2-6.7 6.3-29.1 24.5-34.9 40.2zM248 160h136v328c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V24C0 10.7 10.7 0 24 0h200v136c0 13.2 10.8 24 24 24zm-8 171.8c-20-12.2-33.3-29-42.7-53.8 4.5-18.5 11.6-46.6 6.2-64.2-4.7-29.4-42.4-26.5-47.8-6.8-5 18.3-.4 44.1 8.1 77-11.6 27.6-28.7 64.6-40.8 85.8-.1 0-.1.1-.2.1-27.1 13.9-73.6 44.5-54.5 68 5.6 6.9 16 10 21.5 10 17.9 0 35.7-18 61.1-61.8 25.8-8.5 54.1-19.1 79-23.2 21.7 11.8 47.1 19.5 64 19.5 29.2 0 31.2-32 19.7-43.4-13.9-13.6-54.3-9.7-73.6-7.2zM377 105L279 7c-4.5-4.5-10.6-7-17-7h-6v128h128v-6.1c0-6.3-2.5-12.4-7-16.9zm-74.1 255.3c4.1-2.7-2.5-11.9-42.8-9 37.1 15.8 42.8 9 42.8 9z" />
+              </svg>
+            </a>
+          ) : (
+            <button
+              type="button"
+              class="pdf-icon-btn no-print"
+              onclick="window.print()"
+              title="Print or Save as PDF"
+              aria-label="Print or Save as PDF"
+            >
+              <svg width="38" height="38" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true">
+                <path d="M181.9 256.1c-5-16-4.9-46.9-2-46.9 8.4 0 7.6 36.9 2 46.9zm-1.7 47.2c-7.7 20.2-17.3 43.3-28.4 62.7 18.3-7 39-17.2 62.9-21.9-12.7-9.6-24.9-23.4-34.5-40.8zM86.1 428.1c0 .8 13.2-5.4 34.9-40.2-6.7 6.3-29.1 24.5-34.9 40.2zM248 160h136v328c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V24C0 10.7 10.7 0 24 0h200v136c0 13.2 10.8 24 24 24zm-8 171.8c-20-12.2-33.3-29-42.7-53.8 4.5-18.5 11.6-46.6 6.2-64.2-4.7-29.4-42.4-26.5-47.8-6.8-5 18.3-.4 44.1 8.1 77-11.6 27.6-28.7 64.6-40.8 85.8-.1 0-.1.1-.2.1-27.1 13.9-73.6 44.5-54.5 68 5.6 6.9 16 10 21.5 10 17.9 0 35.7-18 61.1-61.8 25.8-8.5 54.1-19.1 79-23.2 21.7 11.8 47.1 19.5 64 19.5 29.2 0 31.2-32 19.7-43.4-13.9-13.6-54.3-9.7-73.6-7.2zM377 105L279 7c-4.5-4.5-10.6-7-17-7h-6v128h128v-6.1c0-6.3-2.5-12.4-7-16.9zm-74.1 255.3c4.1-2.7-2.5-11.9-42.8-9 37.1 15.8 42.8 9 42.8 9z" />
+              </svg>
+            </button>
+          )
+        }
+      </header>
+
+      <div class="bio-cards">
+        <!-- 1. Contact Information -->
+        <section id="contact-information" class="bio-card" data-bio-section>
+          <h2 class="bio-card-title">Contact Information</h2>
+          <table class="contact-table">
+            <tbody>
+              {
+                contact.map((row) => (
+                  <tr>
+                    <th scope="row">{row.label}</th>
+                    <td set:html={row.valueHtml} />
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </section>
+
+        <!-- 2. Experience -->
+        <section id="experience" class="bio-card" data-bio-section>
+          <h2 class="bio-card-title">Experience</h2>
+          <ul class="bio-entries">
+            {
+              experience.map((item) => (
+                <li class="bio-entry">
+                  <div class="bio-entry-meta">
+                    <span class="bio-pill">{item.period}</span>
+                    <span class="bio-location">
+                      <svg
+                        width="13"
+                        height="13"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                        <circle cx="12" cy="10" r="3" />
+                      </svg>
+                      <span class="bio-location-lines">
+                        <span>{splitLocation(item.location)[0]}</span>
+                        {splitLocation(item.location)[1] && (
+                          <span>{splitLocation(item.location)[1]}</span>
+                        )}
+                      </span>
+                    </span>
+                  </div>
+
+                  <div>
+                    <div class="bio-entry-role">{item.role}</div>
+                    <div class="bio-entry-org">{item.organization}</div>
+                    {item.summary && (
+                      <div class="bio-entry-summary">{item.summary}</div>
+                    )}
+                    {item.highlights.length > 0 && (
+                      <ul class="bio-sublist">
+                        {item.highlights.map((pt) => (
+                          <li>{pt}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+
+        <!-- 3. Education -->
+        <section id="education" class="bio-card" data-bio-section>
+          <h2 class="bio-card-title">Education</h2>
+          <ul class="bio-entries">
+            {
+              education.map((edu) => (
+                <li class="bio-entry">
+                  <div class="bio-entry-meta">
+                    <span class="bio-pill">{edu.period}</span>
+                    <span class="bio-location">
+                      <svg
+                        width="13"
+                        height="13"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                        <circle cx="12" cy="10" r="3" />
+                      </svg>
+                      <span class="bio-location-lines">
+                        <span>{splitLocation(edu.location)[0]}</span>
+                        {splitLocation(edu.location)[1] && (
+                          <span>{splitLocation(edu.location)[1]}</span>
+                        )}
+                      </span>
+                    </span>
+                  </div>
+
+                  <div>
+                    <div class="bio-entry-role">
+                      {edu.degreeUrl ? (
+                        <a
+                          href={edu.degreeUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {edu.degree}
+                        </a>
+                      ) : (
+                        edu.degree
+                      )}
+                    </div>
+                    <div class="bio-entry-org">{edu.institution}</div>
+                    <div class="bio-entry-summary">{edu.department}</div>
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+
+        <!-- 4. Awards -->
+        <section id="awards" class="bio-card" data-bio-section>
+          <h2 class="bio-card-title">Awards</h2>
+          <ul class="bio-entries">
+            {
+              awards.map((award) => (
+                <li class="bio-entry">
+                  <div class="bio-entry-meta">
+                    <span class="bio-pill">{award.year}</span>
+                  </div>
+                  <div>
+                    <div class="bio-entry-role">{award.title}</div>
+                    <div class="bio-entry-org">{award.organization}</div>
+                    {award.description && (
+                      <div class="bio-entry-note">{award.description}</div>
+                    )}
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+
+        <!-- 5. Conference Presentations -->
+        <section id="conference-presentations" class="bio-card" data-bio-section>
+          <h2 class="bio-card-title">Conference Presentations</h2>
+          <ul class="bio-entries">
+            {
+              presentations.map((talk) => (
+                <li class="bio-entry">
+                  <div class="bio-entry-meta">
+                    <span class="bio-pill">{talk.year}</span>
+                  </div>
+                  <div>
+                    <div class="bio-entry-role">&ldquo;{talk.title}&rdquo;</div>
+                    <div class="bio-entry-org">{talk.venue}</div>
+                    {talk.type && (
+                      <div class="bio-entry-note">{talk.type}</div>
+                    )}
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+
+        <!-- 6. Patents -->
+        <section id="patents" class="bio-card" data-bio-section>
+          <h2 class="bio-card-title">Patents</h2>
+          <ul class="bio-entries">
+            {
+              patents.map((pat) => (
+                <li class="bio-entry">
+                  <div class="bio-entry-meta">
+                    <span class="bio-pill">{pat.year}</span>
+                  </div>
+                  <div>
+                    <div class="bio-entry-role">{pat.title}</div>
+                    <div class="bio-entry-org" set:html={pat.inventorsHtml} />
+                    <div class="bio-entry-note">{pat.numberInfo}</div>
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+
+        <!-- 7. Skills & Techniques -->
+        <section id="skills-techniques" class="bio-card" data-bio-section>
+          <h2 class="bio-card-title">Skills &amp; Techniques</h2>
+          <table class="contact-table">
+            <tbody>
+              {
+                skills.map((row) => (
+                  <tr>
+                    <th scope="row" style="width: 190px;">{row.label}</th>
+                    <td>{row.value}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </section>
+
+        <!-- 8. Interests -->
+        {
+          interests && interests.length > 0 && (
+            <section id="interests" class="bio-card" data-bio-section>
+              <h2 class="bio-card-title">Interests</h2>
+              <table class="contact-table">
+                <tbody>
+                  {interests.map((row) => (
+                    <tr>
+                      <th scope="row" style="width: 190px;">{row.label}</th>
+                      <td>{row.value}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </section>
+          )
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky TOC Scrollspy + Snappy Smooth Scroll -->
+  <script is:inline>
+    const sections = Array.from(document.querySelectorAll('[data-bio-section]'));
+    const tocLinks = Array.from(document.querySelectorAll('[data-toc-target]'));
+
+    if (sections.length && tocLinks.length) {
+      let lockedTarget = null;
+      let unlockTimer = null;
+      let scrollAnimId = null;
+
+      const setActive = (id) => {
+        tocLinks.forEach((link) => {
+          link.classList.toggle('active', link.getAttribute('data-toc-target') === id);
+        });
+      };
+
+      const cancelScrollAnim = () => {
+        if (scrollAnimId !== null) {
+          cancelAnimationFrame(scrollAnimId);
+          scrollAnimId = null;
+        }
+      };
+
+      const fastScrollTo = (targetY, duration = 260) => {
+        cancelScrollAnim();
+        const startY = window.scrollY;
+        const delta = targetY - startY;
+        if (
+          Math.abs(delta) < 2 ||
+          window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        ) {
+          window.scrollTo({ top: targetY, behavior: 'instant' });
+          return;
+        }
+
+        const startTime = performance.now();
+        const step = (now) => {
+          const t = Math.min(1, (now - startTime) / duration);
+          // Quintic/cubic ease-out: brisk takeoff, smooth settle
+          const eased = 1 - Math.pow(1 - t, 3);
+          window.scrollTo({ top: startY + delta * eased, behavior: 'instant' });
+          if (t < 1) {
+            scrollAnimId = requestAnimationFrame(step);
+          } else {
+            scrollAnimId = null;
+          }
+        };
+        scrollAnimId = requestAnimationFrame(step);
+      };
+
+      const updateActiveFromScroll = () => {
+        if (lockedTarget) return;
+
+        const atBottom =
+          window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 6;
+        if (atBottom) {
+          setActive(sections[sections.length - 1].id);
+          return;
+        }
+
+        const triggerLine = 110;
+        let currentId = sections[0].id;
+        for (const sec of sections) {
+          if (sec.getBoundingClientRect().top <= triggerLine) {
+            currentId = sec.id;
+          } else {
+            break;
+          }
+        }
+        setActive(currentId);
+      };
+
+      tocLinks.forEach((link) => {
+        link.addEventListener('click', (e) => {
+          const targetId = link.getAttribute('data-toc-target');
+          if (!targetId) return;
+          const targetEl = document.getElementById(targetId);
+          if (!targetEl) return;
+
+          e.preventDefault();
+          lockedTarget = targetId;
+          setActive(targetId);
+
+          const maxScroll = Math.max(
+            0,
+            document.documentElement.scrollHeight - window.innerHeight
+          );
+          const targetY = Math.max(
+            0,
+            Math.min(maxScroll, targetEl.getBoundingClientRect().top + window.scrollY - 78)
+          );
+
+          fastScrollTo(targetY, 260);
+          history.replaceState(null, '', `#${targetId}`);
+
+          clearTimeout(unlockTimer);
+          unlockTimer = setTimeout(() => {
+            lockedTarget = null;
+          }, 320);
+        });
+      });
+
+      const releaseLock = () => {
+        cancelScrollAnim();
+        if (lockedTarget) {
+          lockedTarget = null;
+          clearTimeout(unlockTimer);
+        }
+      };
+
+      window.addEventListener('wheel', releaseLock, { passive: true });
+      window.addEventListener('touchstart', releaseLock, { passive: true });
+      window.addEventListener('scroll', updateActiveFromScroll, { passive: true });
+      updateActiveFromScroll();
+    }
+  </script>
+</BaseLayout>

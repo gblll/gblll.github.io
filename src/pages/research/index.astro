@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE } from '../../data/site';
+
+const ongoing = SITE.research.filter((p) => p.status === 'ongoing');
+const completed = SITE.research.filter((p) => p.status === 'completed');
+const isVideoAsset = (src: string) => /\.(mp4|webm)(?:[?#].*)?$/i.test(src);
+---
+
+<BaseLayout
+  title={`Research — ${SITE.name}`}
+  description={`Ongoing and completed research projects by ${SITE.name}.`}
+  wide={true}
+>
+  <header class="page-header">
+    <h1 class="page-title">Research</h1>
+    <p class="page-subtitle">Ongoing and completed research projects.</p>
+  </header>
+
+  {
+    ongoing.length > 0 && (
+      <section class="year-section" aria-label="Ongoing research projects">
+        <div class="year-divider">
+          <span>Ongoing</span>
+        </div>
+        <div class="research-grid">
+          {ongoing.map((project) => (
+            <a href={`/research/${project.slug}/`} class="research-card">
+              <div class="research-thumb-wrap">
+                {isVideoAsset(project.thumbnail) ? (
+                  <video
+                    src={project.thumbnail}
+                    class="research-thumb"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                  />
+                ) : (
+                  <img
+                    src={project.thumbnail}
+                    alt={project.title}
+                    class="research-thumb"
+                    loading="lazy"
+                  />
+                )}
+              </div>
+              <div class="research-card-body">
+                <h2 class="research-card-title">{project.title}</h2>
+                <p class="research-card-desc">{project.summary}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  {
+    completed.length > 0 && (
+      <section class="year-section" aria-label="Completed research projects">
+        <div class="year-divider">
+          <span>Completed</span>
+        </div>
+        <div class="research-grid">
+          {completed.map((project) => (
+            <a href={`/research/${project.slug}/`} class="research-card">
+              <div class="research-thumb-wrap">
+                {isVideoAsset(project.thumbnail) ? (
+                  <video
+                    src={project.thumbnail}
+                    class="research-thumb"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                  />
+                ) : (
+                  <img
+                    src={project.thumbnail}
+                    alt={project.title}
+                    class="research-thumb"
+                    loading="lazy"
+                  />
+                )}
+              </div>
+              <div class="research-card-body">
+                <h2 class="research-card-title">{project.title}</h2>
+                <p class="research-card-desc">{project.summary}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    )
+  }
+</BaseLayout>
